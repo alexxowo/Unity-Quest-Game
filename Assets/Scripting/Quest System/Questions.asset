@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5356f21b04d58cc42862a7863de11ba8, type: 3}
+  m_Name: Questions
+  m_EditorClassIdentifier: 
+  quests:
+  - ID: 1
+    Question: Prueba
+    Answers:
+    - AnswerID: 0
+      _Answer: asdasd
+    - AnswerID: 1
+      _Answer: asdasdasd
+    - AnswerID: 2
+      _Answer: sdasdasd
+    - AnswerID: 3
+      _Answer: asdasdasd
+    correctAnswer: 0
+    questDifficulty: 0
+  - ID: 1
+    Question: Porque misu es linda jiji
+    Answers:
+    - AnswerID: 0
+      _Answer: nose
+    - AnswerID: 1
+      _Answer: esta no es
+    - AnswerID: 2
+      _Answer: esta tampoco es
+    - AnswerID: 3
+      _Answer: porque si jiji
+    correctAnswer: 3
+    questDifficulty: 0

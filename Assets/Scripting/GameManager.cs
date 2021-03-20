@@ -4,9 +4,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Player Stats")]
+    // Modules
     private QuestGameManager gameQuestManager;
     public Points PlayerPoints;
+
+    [Header("Player Stats")]
+    public int actualLevel = 0;
+    public int limitLevel = 10;
+    
+    // Singleton
+    private static GameManager _instance { get; set; }
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = FindObjectOfType<GameManager>();
+            return _instance;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +34,7 @@ public class GameManager : MonoBehaviour
         gameQuestManager.answerEvents.OnAnswerError += AnswerEvents_OnAnswerError;
     }
 
+
     private void AnswerEvents_OnAnswerError()
     {
         Debug.Log("Fallido");
@@ -25,10 +42,17 @@ public class GameManager : MonoBehaviour
 
     private void AnswerEvents_OnAnswerAssert()
     {
-        PlayerPoints.AddPoints(1000);
-        Debug.Log("Correcto!");
-        Debug.Log($"Puntaje: {PlayerPoints.ActualPoints}");
-        gameQuestManager.NextLevel();
+        if (actualLevel == limitLevel) 
+        {
+            Debug.Log("Listo!");
+        }
+        else
+        {
+            PlayerPoints.AddPoints(1000);
+            gameQuestManager.questUI.setPointsLabel(1000);
+            Debug.Log($"Puntaje: {PlayerPoints.ActualPoints}");
+            gameQuestManager.NextLevel();
+        }
     }
 
 }

@@ -1,15 +1,25 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripting.Quest_System;
+using UnityEngine;
+using UnityEngine.Serialization;
 
+[System.Serializable]
 public class Quest
 {
-    public int ID;
+    [SerializeField]
+    public int ID; 
+    [SerializeField]
     public string Question;
-    public Dictionary<int, string> Answers = new Dictionary<int, string>();
+    [FormerlySerializedAs("Answers")]
+    [SerializeField]
+    public List<Answer> Answers = new List<Answer>();
+    //public Dictionary<int, string> Answers = new Dictionary<int, string>();
+    [SerializeField]
     public int correctAnswer = 0;
+    [SerializeField]
     public QuestDifficulty questDifficulty = QuestDifficulty.Very_Low;
 
-    public Quest(int ID, string Question, Dictionary<int, string> Answers, int correctAnswer, QuestDifficulty questDifficulty)
+    public Quest(int ID, string Question, List<Answer> Answers, int correctAnswer, QuestDifficulty questDifficulty)
     {
         this.ID = ID;
         this.Question = Question;
