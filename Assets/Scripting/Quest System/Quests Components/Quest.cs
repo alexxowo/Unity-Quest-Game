@@ -19,6 +19,9 @@ public class Quest
     [SerializeField]
     public QuestDifficulty questDifficulty = QuestDifficulty.Very_Low;
 
+    [HideInInspector]
+    public bool showQuestContent = false;
+
     public Quest(int ID, string Question, List<Answer> Answers, int correctAnswer, QuestDifficulty questDifficulty)
     {
         this.ID = ID;

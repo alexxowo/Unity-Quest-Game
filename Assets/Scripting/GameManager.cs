@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Player Stats")]
     public int actualLevel = 0;
-    public int limitLevel = 10;
+    public int limitLevel = 12;
     
     // Singleton
     private static GameManager _instance { get; set; }
@@ -33,26 +33,14 @@ public class GameManager : MonoBehaviour
         gameQuestManager.answerEvents.OnAnswerAssert += AnswerEvents_OnAnswerAssert;
         gameQuestManager.answerEvents.OnAnswerError += AnswerEvents_OnAnswerError;
     }
-
-
+    
     private void AnswerEvents_OnAnswerError()
     {
-        Debug.Log("Fallido");
+        Debug.Log("Respuesta Fallida");
     }
 
     private void AnswerEvents_OnAnswerAssert()
     {
-        if (actualLevel == limitLevel) 
-        {
-            Debug.Log("Listo!");
-        }
-        else
-        {
-            PlayerPoints.AddPoints(1000);
-            gameQuestManager.questUI.setPointsLabel(1000);
-            Debug.Log($"Puntaje: {PlayerPoints.ActualPoints}");
-            gameQuestManager.NextLevel();
-        }
+        Debug.Log("Respuesta correcta");
     }
-
 }

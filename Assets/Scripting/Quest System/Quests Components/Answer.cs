@@ -13,6 +13,9 @@ public class Answer
     [SerializeField]
     public string _Answer;
 
+    [HideInInspector]
+    public bool showAnswerContent = false;
+
     public Answer() { }
 
     public Answer(int answerID, string Answer)

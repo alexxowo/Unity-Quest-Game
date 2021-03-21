@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Assets.Scripting.Quest_System;
+﻿using Assets.Scripting.Quest_System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,13 +12,11 @@ public class QuestGameManager : MonoBehaviour
     int randomQuestSelected;
     [Header("Quests ready played data")]
     [SerializeField]
-    public List<int> questPlayed;
+    public int[] questPlayed;
 
     private void Start()
     {
-        randomQuestSelected = Random.Range(0, questManager.quests.Count);
-        questUI.setupUI(randomQuestSelected, questManager);
-        questUI.setPointsLabel(0);
+        Debug.Log($"Selected Quest Index {returnQuest(QuestDifficulty.Low)}");
     }
 
     public void SelectAnswer(int answerIndex)
@@ -30,20 +27,10 @@ public class QuestGameManager : MonoBehaviour
             answerEvents.OnAnswerErrorCallback();
     }
 
-    public void NextLevel()
-    {
-        questPlayed.Add(randomQuestSelected);
-
-        randomQuestSelected = Random.Range(0, questManager.quests.Count);
-        
-        for(int i = 0; i < questPlayed.Count; i++)
-        {
-            if (questPlayed[i] != randomQuestSelected) 
-            {
-                questUI.setupUI(randomQuestSelected, questManager);
-                break;
-            }
-        }
+    public int returnQuest(QuestDifficulty difficulty) {
+        List<Quest> questsSelectedByDifficulty = questManager.quests.FindAll(x => x.questDifficulty.Equals(difficulty));
+        int questSelected = Random.Range(0, questsSelectedByDifficulty.Count);
+        Debug.Log($"Quests selected for {difficulty} difficulty {questsSelectedByDifficulty.Count}");
+        return questSelected;
     }
-
 }

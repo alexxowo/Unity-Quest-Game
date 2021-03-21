@@ -11,14 +11,12 @@ public class QuestEditor : Editor
     SerializedProperty questionLists;
     GUIStyle principalLabel = new GUIStyle();
 
-    bool collapse = false;
-
     public void OnEnable()
     {
         principalLabel.fontSize = 24;
         principalLabel.alignment = TextAnchor.MiddleCenter;
         principalLabel.fontStyle = FontStyle.BoldAndItalic;
-        principalLabel.normal.textColor = Color.green;
+        principalLabel.normal.textColor = Color.red;
 
         questManager = (QuestManager)target;
         questionLists = serializedObject.FindProperty("quests");
@@ -46,9 +44,8 @@ public class QuestEditor : Editor
     {
         for (int element = 0; element < questionLists.arraySize; element++) 
         {
-            
-            collapse = EditorGUILayout.Foldout(collapse, $"Question {element}");
-            if (collapse)
+            questManager.quests[element].showQuestContent = EditorGUILayout.Foldout(questManager.quests[element].showQuestContent, $"Question {element}");
+            if (questManager.quests[element].showQuestContent)
             {
                 EditorGUILayout.BeginVertical("BOX");
                 EditorGUILayout.Space(10);
@@ -65,9 +62,9 @@ public class QuestEditor : Editor
                 EditorGUILayout.PropertyField(questionDiffilculty);
 
                 // Show Answers
-                ShowAnswers(AnswersList);
+                ShowAnswers(AnswersList, questManager.quests[element].Answers);
 
-                if (GUILayout.Button("Delete Question"))
+                if (GUILayout.Button("Delete Question", GUILayout.ExpandWidth(false)))
                 {
                     questionLists.DeleteArrayElementAtIndex(element);
                 }
@@ -78,7 +75,7 @@ public class QuestEditor : Editor
         }
     }
 
-    private void ShowAnswers(SerializedProperty AnswersList)
+    private void ShowAnswers(SerializedProperty AnswersList, List<Answer> answers)
     {
         EditorGUILayout.LabelField($"Answers { AnswersList.arraySize }");
         if (GUILayout.Button("Add New Answer", GUILayout.MaxWidth(130)))
