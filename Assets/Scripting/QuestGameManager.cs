@@ -10,18 +10,32 @@ public class QuestGameManager : MonoBehaviour
     public QuestUI questUI;
     // Quests internal settings
     int randomQuestSelected;
-    [Header("Quests ready played data")]
+    public bool gameEnded = false;
+    [Header("Ready Quest Played Data")]
     [SerializeField]
-    public int[] questPlayed;
+    public List<int> questPlayed;
+
+    private void Awake()
+    {
+        questUI = FindObjectOfType<QuestUI>();
+    }
 
     private void Start()
     {
-        Debug.Log($"Selected Quest Index {returnQuest(QuestDifficulty.Low)}");
+    }
+    
+    private void Update()
+    {
+        if (GameManager.Instance.actualLevel == GameManager.Instance.limitLevel)
+        {
+            gameEnded = true;
+            answerEvents.OnQuestionCompletedCallback();
+        }
     }
 
     public void SelectAnswer(int answerIndex)
     {
-        if (questManager.quests[randomQuestSelected].correctAnswer.Equals(answerIndex))
+        if (questManager.quests[randomQuestSelected].correctAnswer.Equals(answerIndex) && !gameEnded)
             answerEvents.OnAnswerAssertCallback();
         else
             answerEvents.OnAnswerErrorCallback();
@@ -30,6 +44,11 @@ public class QuestGameManager : MonoBehaviour
     public int returnQuest(QuestDifficulty difficulty) {
         List<Quest> questsSelectedByDifficulty = questManager.quests.FindAll(x => x.questDifficulty.Equals(difficulty));
         int questSelected = Random.Range(0, questsSelectedByDifficulty.Count);
+        for (int i = 0; i < questPlayed.Count; i++)
+        {
+            if (questSelected != questPlayed[i])
+                break;
+        }
         Debug.Log($"Quests selected for {difficulty} difficulty {questsSelectedByDifficulty.Count}");
         return questSelected;
     }

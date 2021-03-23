@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Assets.Scripting.Quest_System;
 
 public class GameManager : MonoBehaviour
 {
     // Modules
-    private QuestGameManager gameQuestManager;
+    public QuestGameManager gameQuestManager;
     public Points PlayerPoints;
 
+    private int randomSelectedQuest = 0;
+    
     [Header("Player Stats")]
     public int actualLevel = 0;
     public int limitLevel = 12;
@@ -24,23 +25,48 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        // Define modules
+        gameQuestManager = FindObjectOfType<QuestGameManager>();
+        PlayerPoints = FindObjectOfType<Points>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         gameQuestManager = FindObjectOfType<QuestGameManager>();
         PlayerPoints = FindObjectOfType<Points>();
 
-        gameQuestManager.answerEvents.OnAnswerAssert += AnswerEvents_OnAnswerAssert;
-        gameQuestManager.answerEvents.OnAnswerError += AnswerEvents_OnAnswerError;
+        // Attach Events
+        gameQuestManager.answerEvents.OnQuestionCompleted += OnGameCompleted;
+        gameQuestManager.answerEvents.OnAnswerAssert += OnAnswerAssert;
+        gameQuestManager.answerEvents.OnAnswerError += OnAnswerError;
+
+        StartGame();
+    }
+
+    private void StartGame(){
+        gameQuestManager.questUI.setupUI(gameQuestManager.returnQuest(QuestDifficulty.Low), gameQuestManager.questManager);
     }
     
-    private void AnswerEvents_OnAnswerError()
+    private void OnGameCompleted()
+    {
+        Debug.Log("Juego completado");
+    }
+
+    private void OnAnswerError()
     {
         Debug.Log("Respuesta Fallida");
     }
 
-    private void AnswerEvents_OnAnswerAssert()
+    private void OnAnswerAssert()
     {
         Debug.Log("Respuesta correcta");
+        actualLevel++;
+        gameQuestManager.questPlayed.Add(randomSelectedQuest);
+        randomSelectedQuest = gameQuestManager.returnQuest(QuestDifficulty.Low);
+        gameQuestManager.questUI.setupUI(randomSelectedQuest, gameQuestManager.questManager);
+
     }
 }

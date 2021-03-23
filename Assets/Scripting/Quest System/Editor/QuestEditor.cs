@@ -9,15 +9,9 @@ public class QuestEditor : Editor
 {
     QuestManager questManager;
     SerializedProperty questionLists;
-    GUIStyle principalLabel = new GUIStyle();
 
     public void OnEnable()
     {
-        principalLabel.fontSize = 24;
-        principalLabel.alignment = TextAnchor.MiddleCenter;
-        principalLabel.fontStyle = FontStyle.BoldAndItalic;
-        principalLabel.normal.textColor = Color.red;
-
         questManager = (QuestManager)target;
         questionLists = serializedObject.FindProperty("quests");
     }
@@ -26,7 +20,7 @@ public class QuestEditor : Editor
     {
         serializedObject.Update();
         EditorGUILayout.Space(10);
-        EditorGUILayout.LabelField("Quest Data Editor", principalLabel);
+        EditorGUILayout.LabelField("Quest Data Editor", CustomProps.GetProp("QuestEditorMainTitle"));
         EditorGUILayout.Space(10);
         EditorGUILayout.LabelField("Add Question: ");
 

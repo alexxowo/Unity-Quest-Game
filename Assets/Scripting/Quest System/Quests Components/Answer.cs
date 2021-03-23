@@ -15,7 +15,6 @@ public class Answer
 
     [HideInInspector]
     public bool showAnswerContent = false;
-
     public Answer() { }
 
     public Answer(int answerID, string Answer)

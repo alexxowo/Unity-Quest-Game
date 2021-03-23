@@ -12,4 +12,148 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5356f21b04d58cc42862a7863de11ba8, type: 3}
   m_Name: Questions
   m_EditorClassIdentifier: 
-  quests: []
+  quests:
+  - ID: 0
+    Question: Libertador de venezuela
+    Answers:
+    - AnswerID: 0
+      _Answer: Simon Bolivar
+      showAnswerContent: 0
+    - AnswerID: 1
+      _Answer: Simon Rodriguez
+      showAnswerContent: 0
+    - AnswerID: 2
+      _Answer: George Washintong
+      showAnswerContent: 0
+    - AnswerID: 3
+      _Answer: Xin jin Ping
+      showAnswerContent: 0
+    correctAnswer: 0
+    questDifficulty: 0
+    showQuestContent: 0
+  - ID: 1
+    Question: "En que a\xF1o empezo la segunda guerra mundial"
+    Answers:
+    - AnswerID: 0
+      _Answer: 1874
+      showAnswerContent: 0
+    - AnswerID: 1
+      _Answer: 1914
+      showAnswerContent: 0
+    - AnswerID: 2
+      _Answer: 1945
+      showAnswerContent: 0
+    - AnswerID: 3
+      _Answer: 1939
+      showAnswerContent: 0
+    correctAnswer: 3
+    questDifficulty: 1
+    showQuestContent: 0
+  - ID: 2
+    Question: Cual fue el primer pais que Hitlet invadio e inicio la segunda guerra?
+    Answers:
+    - AnswerID: 0
+      _Answer: Alemania
+      showAnswerContent: 0
+    - AnswerID: 1
+      _Answer: Rusia
+      showAnswerContent: 0
+    - AnswerID: 2
+      _Answer: Polonia
+      showAnswerContent: 0
+    - AnswerID: 3
+      _Answer: Francia
+      showAnswerContent: 0
+    correctAnswer: 2
+    questDifficulty: 1
+    showQuestContent: 0
+  - ID: 3
+    Question: "En que a\xF1o ocurrio el accidente de Chernobyl?"
+    Answers:
+    - AnswerID: 0
+      _Answer: 1885
+      showAnswerContent: 0
+    - AnswerID: 1
+      _Answer: 1284
+      showAnswerContent: 0
+    - AnswerID: 2
+      _Answer: 1968
+      showAnswerContent: 0
+    - AnswerID: 3
+      _Answer: 1945
+      showAnswerContent: 0
+    correctAnswer: 0
+    questDifficulty: 2
+    showQuestContent: 0
+  - ID: 4
+    Question: "En que a\xF1o ocurrio el golpe de estado de Chavez el 4 de Febrero?"
+    Answers:
+    - AnswerID: 0
+      _Answer: 1999
+      showAnswerContent: 0
+    - AnswerID: 1
+      _Answer: 1992
+      showAnswerContent: 0
+    - AnswerID: 2
+      _Answer: 1323
+      showAnswerContent: 0
+    - AnswerID: 3
+      _Answer: 1969
+      showAnswerContent: 0
+    correctAnswer: 1
+    questDifficulty: 1
+    showQuestContent: 0
+  - ID: 5
+    Question: 'Tovar Linus fue el padre de:'
+    Answers:
+    - AnswerID: 0
+      _Answer: Linux
+      showAnswerContent: 0
+    - AnswerID: 1
+      _Answer: Windows
+      showAnswerContent: 0
+    - AnswerID: 2
+      _Answer: MacOS
+      showAnswerContent: 0
+    - AnswerID: 3
+      _Answer: Android
+      showAnswerContent: 0
+    correctAnswer: 0
+    questDifficulty: 1
+    showQuestContent: 0
+  - ID: 6
+    Question: 'Java es un lenguaje que funciona con:'
+    Answers:
+    - AnswerID: 0
+      _Answer: Una piedra
+      showAnswerContent: 0
+    - AnswerID: 1
+      _Answer: Un jarron
+      showAnswerContent: 0
+    - AnswerID: 2
+      _Answer: Una manzada
+      showAnswerContent: 0
+    - AnswerID: 3
+      _Answer: Una Maquina virtual
+      showAnswerContent: 0
+    correctAnswer: 3
+    questDifficulty: 1
+    showQuestContent: 0
+  - ID: 7
+    Question: la respuesta es la 4
+    Answers:
+    - AnswerID: 0
+      _Answer: a
+      showAnswerContent: 0
+    - AnswerID: 1
+      _Answer: c
+      showAnswerContent: 0
+    - AnswerID: 2
+      _Answer: b
+      showAnswerContent: 0
+    - AnswerID: 3
+      _Answer: Esta es, n00b
+      showAnswerContent: 0
+    correctAnswer: 3
+    questDifficulty: 0
+    showQuestContent: 0
